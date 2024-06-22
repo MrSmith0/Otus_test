@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Настройки
-BACKUP_DIR="/path/to/backup/dir"
+BACKUP_DIR="/root/backup/"
 MYSQL_USER="zabbix"
-MYSQL_PASSWORD="your_password"
+MYSQL_PASSWORD="P3run6k8"
 DATABASE="zabbix"
 TIMESTAMP=$(date +"%F")
 BACKUP_FILE="$BACKUP_DIR/zabbix_db_backup_$TIMESTAMP.sql"

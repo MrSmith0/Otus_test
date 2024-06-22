@@ -5,7 +5,7 @@ BACKUP_DIR="/root/backup/zabbix_bak" #zabbix_bak
 MYSQL_USER="zabbix"
 MYSQL_PASSWORD="P3run6k8"
 DATABASE="zabbix"
-TIMESTAMP="2023-06-21"  # Дата бэкапа, который нужно восстановить
+TIMESTAMP="2024-06-22"  # Дата бэкапа, который нужно восстановить
 
 BACKUP_FILE="$BACKUP_DIR/zabbix_db_backup_$TIMESTAMP.sql"
 CONFIG_BACKUP_DIR="$BACKUP_DIR/config_backup_$TIMESTAMP"
