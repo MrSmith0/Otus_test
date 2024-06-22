@@ -36,7 +36,7 @@ case $choice in
         echo "Запуск всех скриптов..."
         bash scripst/master-mysql-setup.sh
         bash scripst/slave-mysql-setup.sh
-        bash scripst/wordpress-setup.sh
+        bash scripst/wordpress-setup.sh && bash mysql_master_restore.sh
         bash scripst/load-balancer-setup.sh
         bash scripst/zabbix_rsyslog.sh
         ;;
