@@ -22,7 +22,7 @@ case $choice in
         ;;
     3)
         echo "Запуск настройки сервера WordPress..."
-        bash scripts/wordpress-setup.sh && bash mysql_master_restore.sh
+        bash scripts/wordpress-setup.sh
         ;;
     4)
         echo "Запуск настройки Nginx как балансировщика нагрузки..."
@@ -36,7 +36,7 @@ case $choice in
         echo "Запуск всех скриптов..."
         bash scripts/master-mysql-setup.sh
         bash scripts/slave-mysql-setup.sh
-        bash scripts/wordpress-setup.sh && bash mysql_master_restore.sh
+        bash scripts/wordpress-setup.sh
         bash scripts/load-balancer-setup.sh
         bash scripts/zabbix_rsyslog.sh
         ;;
