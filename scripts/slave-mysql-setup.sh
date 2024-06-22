@@ -22,8 +22,8 @@ EOF'
 # Перезапускаем MySQL
 sudo systemctl restart mysql
 
-# Настраиваем репликацию (замените 'master_host_ip' на IP вашего мастера)
-MASTER_HOST='5.35.90.73'
+# Настраиваем репликацию
+MASTER_HOST='31.128.40.200'
 REPLICA_USER='replica'
 REPLICA_PASS='P3run6k8'
 
@@ -49,14 +49,14 @@ sudo apt install rsyslog -y
 
 # Добавляем конфигурацию для отправки логов на центральный сервер (замените central_rsyslog_server_ip на IP вашего сервера с Rsyslog)
 sudo bash -c 'cat <<EOF > /etc/rsyslog.d/50-default.conf
-*.* @central_rsyslog_server_ip:514
+*.* @31.128.41.137:514
 EOF'
 
 # Перезапускаем Rsyslog для применения настроек
 sudo systemctl restart rsyslog
 
 # Переменные для конфигурации
-ZABBIX_SERVER="31.128.42.44"  
+ZABBIX_SERVER="31.128.41.137"
 ZABBIX_AGENT_CONF="/etc/zabbix/zabbix_agent2.conf"
 
 # Установка необходимых зависимостей
