@@ -33,7 +33,7 @@ $MYSQL_COMMAND "FLUSH PRIVILEGES;"
 
 
  Загрузка и распаковка tar архива в директорию /var/www/html
-TAR_FILE_URL="http://31.128.40.200/files/html.tar"
+TAR_FILE_URL="https://github.com/MrSmith0/Otus_test/blob/main/dotfiles/html.tar"
 TAR_FILE="/tmp/html.tar"
 
 sudo rm -rf /var/www/* 
