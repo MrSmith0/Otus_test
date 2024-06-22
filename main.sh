@@ -14,31 +14,31 @@ read -p "Введите номер опции: " choice
 case $choice in
     1)
         echo "Запуск настройки MySQL Master..."
-        bash scripst/master-mysql-setup.sh
+        bash scripts/master-mysql-setup.sh
         ;;
     2)
         echo "Запуск настройки MySQL Slave..."
-        bash scripst/slave-mysql-setup.sh
+        bash scripts/slave-mysql-setup.sh
         ;;
     3)
         echo "Запуск настройки сервера WordPress..."
-        bash scripst/wordpress-setup.sh && bash mysql_master_restore.sh
+        bash scripts/wordpress-setup.sh && bash mysql_master_restore.sh
         ;;
     4)
         echo "Запуск настройки Nginx как балансировщика нагрузки..."
-        bash scripst/load-balancer-setup.sh
+        bash scripts/load-balancer-setup.sh
         ;;
     5)
         echo "Запуск настройки Zabbix и rsyslog..."
-        bash scripst/zabbix_rsyslog.sh
+        bash scripts/zabbix_rsyslog.sh
         ;;
     6)
         echo "Запуск всех скриптов..."
-        bash scripst/master-mysql-setup.sh
-        bash scripst/slave-mysql-setup.sh
-        bash scripst/wordpress-setup.sh && bash mysql_master_restore.sh
-        bash scripst/load-balancer-setup.sh
-        bash scripst/zabbix_rsyslog.sh
+        bash scripts/master-mysql-setup.sh
+        bash scripts/slave-mysql-setup.sh
+        bash scripts/wordpress-setup.sh && bash mysql_master_restore.sh
+        bash scripts/load-balancer-setup.sh
+        bash scripts/zabbix_rsyslog.sh
         ;;
     7)
         echo "Выход."
