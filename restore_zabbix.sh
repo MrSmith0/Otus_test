@@ -11,7 +11,7 @@ BACKUP_FILE="$BACKUP_DIR/zabbix_db_backup_$TIMESTAMP.sql"
 CONFIG_BACKUP_DIR="$BACKUP_DIR/config_backup_$TIMESTAMP"
 
 #Загрузка и распаковка tar архива в директорию /var/www/html
-TAR_FILE_URL="https://github.com/MrSmith0/Otus_test/blob/main/dotfiles/zabbix_bak.tar"
+TAR_FILE_URL="https://github.com/MrSmith0/Otus_test/raw/main/dotfiles/zabbix_bak.tar"
 TAR_FILE= $BACKUP_DIR
 
 sudo wget $TAR_FILE_URL -O $TAR_FILE
