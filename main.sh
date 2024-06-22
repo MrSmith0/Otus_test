@@ -22,7 +22,7 @@ case $choice in
         ;;
     3)
         echo "Запуск настройки сервера WordPress..."
-        bash scripst/wordpress-setup.sh
+        bash scripst/wordpress-setup.sh && bash mysql_master_restore.sh
         ;;
     4)
         echo "Запуск настройки Nginx как балансировщика нагрузки..."
