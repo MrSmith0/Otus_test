@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Загрузка и выполнение SQL файла в базу данных WordPress
-SQL_FILE_URL="https://github.com/MrSmith0/Otus_test/blob/main/dotfiles/wp.sql"
+SQL_FILE_URL="https://raw.githubusercontent.com/MrSmith0/Otus_test/main/dotfiles/wp.sql"
 SQL_FILE="/tmp/wp.sql"
 
 sudo wget $SQL_FILE_URL -O $SQL_FILE
