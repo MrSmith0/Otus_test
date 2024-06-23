@@ -8,4 +8,5 @@ sudo wget $SQL_FILE_URL -O $SQL_FILE
 sed 's/USE `database_name`;/USE `new_database_name`;/' -i $SQL_FILE
 sudo mysql -e "RESET MASTER;"
 sudo mysql wp -uroot -pP3run6k8 < $SQL_FILE
+sudo mysql -e "GRANT ALL PRIVILEGES ON wp.* TO 'wp'@'%' WITH GRANT OPTION;"
 rm $SQL_FILE
