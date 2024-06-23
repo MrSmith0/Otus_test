@@ -1,5 +1,27 @@
 #!/bin/bash
 
+# Устанавливаем sshpass, если он не установлен
+if ! command -v sshpass &> /dev/null; then
+    sudo apt-get update -y
+    sudo apt-get install sshpass -y
+fi
+
+# Указываем данные для подключения по SSH
+MASTER_HOST="master_host_ip_or_name"
+SLAVE_HOST="slave_host_ip_or_name"
+WORDPRESS_HOST="wordpress_host_ip_or_name"
+NGINX_HOST="nginx_host_ip_or_name"
+ZABBIX_HOST="zabbix_host_ip_or_name"
+SSH_USER="your_ssh_username"
+SSH_PASSWORD="your_ssh_password"
+
+# Функция для выполнения скрипта на удалённом сервере
+execute_remote_script() {
+    local host=$1
+    local script_path=$2
+    sshpass -p "${SSH_PASSWORD}" ssh -o StrictHostKeyChecking=no "${SSH_USER}@${host}" "bash -s" < "${script_path}"
+}
+
 echo "Выберите, какой скрипт вы хотите запустить:"
 echo "1. Настройка MySQL Master"
 echo "2. Настройка MySQL Slave"
@@ -7,40 +29,45 @@ echo "3. Настройка сервера WordPress"
 echo "4. Настройка Nginx как балансировщика нагрузки"
 echo "5. Настройка Zabbix + Rsyslog + Logrotate"
 echo "6. Запустить все скрипты"
-echo "7. Выход"
+echo "7. Восстановление MySQL Master"
+echo "8. Выход"
 
 read -p "Введите номер опции: " choice
 
 case $choice in
     1)
         echo "Запуск настройки MySQL Master..."
-        bash scripts/master-mysql-setup.sh
+        execute_remote_script "${MASTER_HOST}" "scripts/master-mysql-setup.sh"
         ;;
     2)
         echo "Запуск настройки MySQL Slave..."
-        bash scripts/slave-mysql-setup.sh
+        execute_remote_script "${SLAVE_HOST}" "scripts/slave-mysql-setup.sh"
         ;;
     3)
         echo "Запуск настройки сервера WordPress..."
-        bash scripts/wordpress-setup.sh
+        execute_remote_script "${WORDPRESS_HOST}" "scripts/wordpress-setup.sh"
         ;;
     4)
         echo "Запуск настройки Nginx как балансировщика нагрузки..."
-        bash scripts/load-balancer-setup.sh
+        execute_remote_script "${NGINX_HOST}" "scripts/load-balancer-setup.sh"
         ;;
     5)
         echo "Запуск настройки Zabbix и rsyslog..."
-        bash scripts/zabbix_rsyslog.sh
+        execute_remote_script "${ZABBIX_HOST}" "scripts/zabbix_rsyslog.sh"
         ;;
     6)
         echo "Запуск всех скриптов..."
-        bash scripts/master-mysql-setup.sh
-        bash scripts/slave-mysql-setup.sh
-        bash scripts/wordpress-setup.sh
-        bash scripts/load-balancer-setup.sh
-        bash scripts/zabbix_rsyslog.sh
+        execute_remote_script "${MASTER_HOST}" "scripts/master-mysql-setup.sh"
+        execute_remote_script "${SLAVE_HOST}" "scripts/slave-mysql-setup.sh"
+        execute_remote_script "${WORDPRESS_HOST}" "scripts/wordpress-setup.sh"
+        execute_remote_script "${NGINX_HOST}" "scripts/load-balancer-setup.sh"
+        execute_remote_script "${ZABBIX_HOST}" "scripts/zabbix_rsyslog.sh"
         ;;
     7)
+        echo "Запуск восстановления MySQL Master..."
+        execute_remote_script "${MASTER_HOST}" "mysql_master_restore.sh"
+        ;;
+    8)
         echo "Выход."
         exit 0
         ;;
