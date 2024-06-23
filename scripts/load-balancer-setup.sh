@@ -39,7 +39,7 @@ sudo apt install rsyslog -y
 
 # Добавляем конфигурацию для отправки логов на центральный сервер (замените central_rsyslog_server_ip на IP вашего сервера с Rsyslog)
 sudo bash -c 'cat <<EOF > /etc/rsyslog.d/50-default.conf
-*.* @31.128.41.137:514
+*.* @192.168.1.104:514
 EOF'
 
 # Перезапускаем Rsyslog для применения настроек
