@@ -54,6 +54,9 @@ sudo mysql -e "GRANT ALL PRIVILEGES ON zabbix.* TO 'zabbix'@'localhost';"
 sudo mysql -e "set global log_bin_trust_function_creators = 1;"
 sudo mysql -e "FLUSH PRIVILEGES;"
 
+# Настройка locale
+locale-gen --purge en_US.UTF-8 ru_RU.UTF-8
+
 # Установка репозитория Zabbix
 wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_7.0-1+ubuntu24.04_all.deb  
 dpkg -i zabbix-release_7.0-1+ubuntu24.04_all.deb  
