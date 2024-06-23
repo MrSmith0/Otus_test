@@ -46,7 +46,7 @@ EOF'
 sudo systemctl restart rsyslog
 
 # Переменные для конфигурации
-ZABBIX_SERVER="31.128.41.137"
+ZABBIX_SERVER="192.168.1.104"
 ZABBIX_AGENT_CONF="/etc/zabbix/zabbix_agent2.conf"
 
 # Установка необходимых зависимостей
