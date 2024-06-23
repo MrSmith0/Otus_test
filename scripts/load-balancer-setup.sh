@@ -52,7 +52,8 @@ ZABBIX_AGENT_CONF="/etc/zabbix/zabbix_agent2.conf"
 # Установка необходимых зависимостей
 sudo apt update -y
 sudo apt install -y wget gnupg libldap-common libssl-dev
-sudo dpkg -i dotfiles/libssl1.1_1.1.1f-1ubuntu2.22_amd64.deb
+wget https://github.com/MrSmith0/Otus_test/raw/main/dotfiles/libssl1.1_1.1.1f-1ubuntu2.22_amd64.deb
+dpkg -i libssl1.1_1.1.1f-1ubuntu2.22_amd64.deb
 
 # Добавление репозитория Zabbix
 wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix/zabbix-agent2_7.0.0-1%2Bubuntu24.04_amd64.deb
