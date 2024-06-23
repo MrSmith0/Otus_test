@@ -11,6 +11,7 @@ sudo tar -xvzf latest.tar.gz
 sudo rm latest.tar.gz
 sudo mv wordpress/* .
 sudo rm -rf wordpress
+cd ~/
 
 # Настройка прав доступа
 sudo chown -R www-data:www-data /var/www/html
