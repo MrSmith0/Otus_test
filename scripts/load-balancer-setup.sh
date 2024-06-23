@@ -7,8 +7,8 @@ sudo apt install nginx -y
 # Конфигурируем Nginx для балансировки нагрузки
 sudo bash -c 'cat <<EOF > /etc/nginx/sites-available/load_balancer
 upstream wordpress_servers {
-    server 31.128.41.141:8080;
-    server 31.128.41.141:8081;
+    server 192.168.1.101:8080;
+    server 192.168.1.101:8081;
 }
 
 server {
