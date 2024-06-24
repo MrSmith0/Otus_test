@@ -27,10 +27,6 @@ MASTER_HOST='192.168.1.102'
 REPLICA_USER='replica'
 REPLICA_PASS='P3run6k8'
 
-sudo mysql -e "CREATE USER root@'%' IDENTIFIED WITH 'caching_sha2_password' BY 'P3run6k8';"
-sudo mysql -e "GRANT ALL PRIVILEGES ON * . * TO 'root'@'%';"
-sudo mysql -e "FLUSH PRIVILEGES;"
-
 sudo mysql -e "SHOW GLOBAL VARIABLES LIKE 'caching_sha2_password_public_key_path';"
 sudo mysql -e "SHOW STATUS LIKE 'Caching_sha2_password_rsa_public_key'\G"
 
