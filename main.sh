@@ -7,13 +7,13 @@ if ! command -v sshpass &> /dev/null; then
 fi
 
 # Указываем данные для подключения по SSH
-MASTER_HOST="master_host_ip_or_name"
-SLAVE_HOST="slave_host_ip_or_name"
-WORDPRESS_HOST="wordpress_host_ip_or_name"
-NGINX_HOST="nginx_host_ip_or_name"
-ZABBIX_HOST="zabbix_host_ip_or_name"
-SSH_USER="your_ssh_username"
-SSH_PASSWORD="your_ssh_password"
+MASTER_HOST="192.168.1.102"
+SLAVE_HOST="192.168.1.103"
+WORDPRESS_HOST="192.168.1.101"
+NGINX_HOST="192.168.1.100"
+ZABBIX_HOST="192.168.1.104"
+SSH_USER="root"
+SSH_PASSWORD="!P3run6k8"
 
 # Функция для выполнения скрипта на удалённом сервере
 execute_remote_script() {
