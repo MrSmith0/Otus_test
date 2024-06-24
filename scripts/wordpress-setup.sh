@@ -4,13 +4,6 @@
 sudo apt update -y
 sudo apt install apache2 php php-mysql libapache2-mod-php wget curl mysql-client -y
 
-# Скачивание и установка WordPress
-cd /var/www/html
-sudo wget https://wordpress.org/latest.tar.gz
-sudo tar -xvzf latest.tar.gz
-sudo rm latest.tar.gz
-sudo mv wordpress/* .
-sudo rm -rf wordpress
 cd ~/
 
 # Настройка прав доступа
