@@ -65,7 +65,7 @@ case $choice in
         ;;
     7)
         echo "Запуск восстановления MySQL Master..."
-        execute_remote_script "${MASTER_HOST}" "mysql_master_restore.sh"
+        execute_remote_script "${MASTER_HOST}" "scripts/mysql_master_restore.sh"
         ;;
     8)
         echo "Выход."
