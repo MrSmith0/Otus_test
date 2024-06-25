@@ -34,14 +34,14 @@ if [ $? -ne 0 ]; then
 fi
 
 # Восстановление конфигурационных файлов
-sudo cp -r $CONFIG_BACKUP_DIR/zabbix/etc/
+sudo cp -r $CONFIG_BACKUP_DIR/zabbix /etc/
 if [ $? -ne 0 ]; then
     echo "Ошибка: не удалось восстановить конфигурационные файлы Zabbix"
     exit 1
 fi
 
 # Восстановление конфигурации веб-сервера Apache
-sudo cp $CONFIG_BACKUP_DIR/zabbix.conf/etc/apache2/conf-enabled/
+sudo cp $CONFIG_BACKUP_DIR/zabbix.conf /etc/apache2/conf-enabled/
 if [ $? -ne 0 ]; then
     echo "Ошибка: не удалось восстановить конфигурационный файл Apache"
     exit 1
