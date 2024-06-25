@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Настройки
-BACKUP_DIR="/root/backup/zabbix_bak" #zabbix_bak
+BACKUP_DIR="/root/zabbix_bak" #zabbix_bak
 MYSQL_USER="zabbix"
 MYSQL_PASSWORD="P3run6k8"
 DATABASE="zabbix"
@@ -10,12 +10,13 @@ TIMESTAMP="2024-06-22"  # Дата бэкапа, который нужно во�
 BACKUP_FILE="$BACKUP_DIR/zabbix_db_backup_$TIMESTAMP.sql"
 CONFIG_BACKUP_DIR="$BACKUP_DIR/config_backup_$TIMESTAMP"
 
+
 #Загрузка и распаковка tar архива в директорию /var/www/html
 TAR_FILE_URL="https://github.com/MrSmith0/Otus_test/raw/main/dotfiles/zabbix_bak.tar"
-TAR_FILE= $BACKUP_DIR
+TAR_FILE="zabbix_bak.tar" 
 
-sudo wget $TAR_FILE_URL -O $TAR_FILE
-sudo tar -xvf $TAR_FILE -C $BACKUP_DIR
+sudo wget $TAR_FILE_URL
+sudo tar -xvf $TAR_FILE -C "/root/"
 
 # Остановка Zabbix сервера и агента
 sudo systemctl stop zabbix-server zabbix-agent apache2
