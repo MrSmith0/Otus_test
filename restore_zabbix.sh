@@ -1,19 +1,19 @@
 #!/bin/bash
 
 # Настройки
-BACKUP_DIR="/root/zabbix_bak" #zabbix_bak
+BACKUP_DIR="/root/backup" #zabbix_bak
 MYSQL_USER="zabbix"
 MYSQL_PASSWORD="P3run6k8"
 DATABASE="zabbix"
-TIMESTAMP="2024-06-22"  # Дата бэкапа, который нужно восстановить
+TIMESTAMP="2024-06-24"  # Дата бэкапа, который нужно восстановить
 
 BACKUP_FILE="$BACKUP_DIR/zabbix_db_backup_$TIMESTAMP.sql"
 CONFIG_BACKUP_DIR="$BACKUP_DIR/config_backup_$TIMESTAMP"
 
 
 #Загрузка и распаковка tar архива в директорию /var/www/html
-TAR_FILE_URL="https://github.com/MrSmith0/Otus_test/raw/main/dotfiles/zabbix_bak.tar"
-TAR_FILE="zabbix_bak.tar" 
+TAR_FILE_URL="https://github.com/MrSmith0/Otus_test/raw/main/dotfiles/backup-zabbix.tar"
+TAR_FILE="backup-zabbix.tar" 
 
 sudo wget $TAR_FILE_URL
 sudo tar -xvf $TAR_FILE -C "/root/"
@@ -34,14 +34,14 @@ if [ $? -ne 0 ]; then
 fi
 
 # Восстановление конфигурационных файлов
-sudo cp -r $CONFIG_BACKUP_DIR/zabbix /etc/
+sudo cp -r $CONFIG_BACKUP_DIR/zabbix/etc/
 if [ $? -ne 0 ]; then
     echo "Ошибка: не удалось восстановить конфигурационные файлы Zabbix"
     exit 1
 fi
 
 # Восстановление конфигурации веб-сервера Apache
-sudo cp $CONFIG_BACKUP_DIR/zabbix.conf /etc/apache2/conf-enabled/
+sudo cp $CONFIG_BACKUP_DIR/zabbix.conf/etc/apache2/conf-enabled/
 if [ $? -ne 0 ]; then
     echo "Ошибка: не удалось восстановить конфигурационный файл Apache"
     exit 1
