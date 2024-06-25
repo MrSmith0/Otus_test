@@ -21,10 +21,11 @@ sudo tar -xvf $TAR_FILE -C $BACKUP_DIR
 sudo systemctl stop zabbix-server zabbix-agent apache2
 
 # Восстановление базы данных
-mysql -e "DROP DATABASE $DATABASE;"
-mysql -e "CREATE DATABASE $DATABASE CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;"
-mysql $DATABASE < $BACKUP_FILE
-sudo mysql -e "GRANT ALL PRIVILEGES ON zabbix.* TO 'zabbix'@'localhost' WITH GRANT OPTION;"
+sudo mysql -e "DROP DATABASE $DATABASE;"
+sudo mysql -e "CREATE DATABASE $DATABASE CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;"
+sudo mysql $DATABASE < $BACKUP_FILE
+sudo mysql -e "GRANT ALL PRIVILEGES ON $DATABASE.* TO '$MYSQL_USER'@'localhost' WITH GRANT OPTION;"
+sudo mysql -e "set global log_bin_trust_function_creators = 1;"
 sudo mysql -e "FLUSH PRIVILEGES;"
 if [ $? -ne 0 ]; then
     echo "Ошибка: не удалось восстановить базу данных"
